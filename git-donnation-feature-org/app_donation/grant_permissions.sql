@@ -1,0 +1,7 @@
+-- Grant all necessary privileges to medtlb user for automatic table creation
+GRANT ALL PRIVILEGES ON SCHEMA public TO medtlb;
+ALTER SCHEMA public OWNER TO medtlb;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO medtlb;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO medtlb;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO medtlb;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON SEQUENCES TO medtlb;
