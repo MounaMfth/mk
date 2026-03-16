@@ -8,13 +8,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.*;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.nio.file.*;
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.UUID;
 
@@ -72,8 +69,6 @@ public class ActiviteController {
     public ResponseEntity<?> create(
             @AuthenticationPrincipal Jwt jwt,
             @RequestParam String titre,
-            @RequestParam(required = false) String dateDebut,
-            @RequestParam(required = false) String dateFin,
             @RequestParam(required = false) String description,
             @RequestParam Double latitude,
             @RequestParam Double longitude,
@@ -82,20 +77,11 @@ public class ActiviteController {
         try {
             String orgId = requireOrgId(jwt);
 
-            LocalDate d0 = StringUtils.hasText(dateDebut)
-                    ? parseIsoDateOrThrow(dateDebut, "dateDebut")
-                    : null;
-            LocalDate d1 = StringUtils.hasText(dateFin)
-                    ? parseIsoDateOrThrow(dateFin, "dateFin")
-                    : null;
-
             Activite a = new Activite();
             a.setTitre(titre);
             a.setDescription(description);
             a.setLatitude(latitude);
             a.setLongitude(longitude);
-            a.setDateDebut(d0);
-            a.setDateFin(d1);
             a.setObjectifFinancier(objectifFinancier);
 
             if (image != null && !image.isEmpty()) {
@@ -125,8 +111,6 @@ public class ActiviteController {
             @PathVariable String id,
             @AuthenticationPrincipal Jwt jwt,
             @RequestParam String titre,
-            @RequestParam(required = false) String dateDebut,
-            @RequestParam(required = false) String dateFin,
             @RequestParam(required = false) String description,
             @RequestParam Double latitude,
             @RequestParam Double longitude,
@@ -135,20 +119,11 @@ public class ActiviteController {
         try {
             String orgId = requireOrgId(jwt);
 
-            LocalDate d0 = StringUtils.hasText(dateDebut)
-                    ? parseIsoDateOrThrow(dateDebut, "dateDebut")
-                    : null;
-            LocalDate d1 = StringUtils.hasText(dateFin)
-                    ? parseIsoDateOrThrow(dateFin, "dateFin")
-                    : null;
-
             Activite a = new Activite();
             a.setTitre(titre);
             a.setDescription(description);
             a.setLatitude(latitude);
             a.setLongitude(longitude);
-            a.setDateDebut(d0);
-            a.setDateFin(d1);
             a.setObjectifFinancier(objectifFinancier);
 
             if (image != null && !image.isEmpty()) {
@@ -212,15 +187,6 @@ public class ActiviteController {
             throw new IllegalStateException("Organisation absente du token");
         }
         return claim.toString();
-    }
-
-    private LocalDate parseIsoDateOrThrow(String value, String field) {
-        try {
-            return LocalDate.parse(value);
-        } catch (DateTimeParseException e) {
-            throw new IllegalArgumentException(
-                    "Format de " + field + " invalide (YYYY-MM-DD attendu)");
-        }
     }
 
     private String saveImage(MultipartFile file) throws Exception {

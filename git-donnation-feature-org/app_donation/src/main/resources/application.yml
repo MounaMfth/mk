@@ -29,6 +29,7 @@ spring:
           model: deepseek-chat
 
 app:
+  base.url: http://localhost:8088
   upload:
     dir: uploads
 

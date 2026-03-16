@@ -58,8 +58,6 @@ public class ProjetService {
                 .titre(dto.getTitre())
                 .description(dto.getDescription())
                 .objectifFinancier(dto.getObjectifFinancier())
-                .dateDebut(dto.getDateDebut())
-                .dateFin(dto.getDateFin())
                 .statut(dto.getStatut() != null ? dto.getStatut() : "EN_ATTENTE")
                 .image(dto.getImage())
                 .dateCreation(LocalDate.now())
@@ -95,8 +93,6 @@ public class ProjetService {
         projet.setTitre(dto.getTitre());
         projet.setDescription(dto.getDescription());
         projet.setObjectifFinancier(dto.getObjectifFinancier());
-        projet.setDateDebut(dto.getDateDebut());
-        projet.setDateFin(dto.getDateFin());
         projet.setStatut(dto.getStatut());
         projet.setImage(dto.getImage());
         projet.setDateModification(LocalDate.now());
@@ -146,8 +142,6 @@ public class ProjetService {
                 .titre(projet.getTitre())
                 .description(projet.getDescription())
                 .objectifFinancier(projet.getObjectifFinancier())
-                .dateDebut(projet.getDateDebut())
-                .dateFin(projet.getDateFin())
                 .statut(projet.getStatut())
                 .image(projet.getImage())
                 .dateCreation(projet.getDateCreation())

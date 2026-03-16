@@ -1,7 +1,6 @@
 package iscae.mr.app_donation.dao.entities;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -18,12 +17,6 @@ public class Activite {
 
     @Column
     private String description;
-
-    @Column
-    private LocalDate dateDebut;
-
-    @Column
-    private LocalDate dateFin;
 
     @Column
     private Double latitude;
@@ -78,22 +71,6 @@ public class Activite {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public LocalDate getDateDebut() {
-        return dateDebut;
-    }
-
-    public void setDateDebut(LocalDate d) {
-        this.dateDebut = d;
-    }
-
-    public LocalDate getDateFin() {
-        return dateFin;
-    }
-
-    public void setDateFin(LocalDate d) {
-        this.dateFin = d;
     }
 
     public Double getLatitude() {

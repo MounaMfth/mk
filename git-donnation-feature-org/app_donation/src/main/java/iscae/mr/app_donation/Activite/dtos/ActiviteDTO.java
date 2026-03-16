@@ -1,7 +1,6 @@
 package iscae.mr.app_donation.Activite.dtos;
 
 import lombok.*;
-import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -12,8 +11,6 @@ public class ActiviteDTO {
     private String id;
     private String titre;
     private String description;
-    private LocalDate dateDebut;
-    private LocalDate dateFin;
     private Double latitude;
     private Double longitude;
 

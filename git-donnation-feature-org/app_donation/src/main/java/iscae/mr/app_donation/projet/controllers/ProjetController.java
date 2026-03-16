@@ -28,8 +28,6 @@ public class ProjetController {
             @RequestParam String titre,
             @RequestParam String description,
             @RequestParam Double objectifFinancier,
-            @RequestParam String dateDebut,
-            @RequestParam String dateFin,
             @RequestParam(required = false) String statut,
             @RequestParam(required = false) org.springframework.web.multipart.MultipartFile image) {
         try {
@@ -37,8 +35,6 @@ public class ProjetController {
                     .titre(titre)
                     .description(description)
                     .objectifFinancier(objectifFinancier)
-                    .dateDebut(java.time.LocalDate.parse(dateDebut))
-                    .dateFin(java.time.LocalDate.parse(dateFin))
                     .statut(statut)
                     .build();
 
@@ -71,8 +67,8 @@ public class ProjetController {
                     if (roles instanceof java.util.List) {
                         @SuppressWarnings("unchecked")
                         java.util.List<String> roleList = (java.util.List<String>) roles;
-                        if (roleList.contains("ORG") || roleList.contains("ROLE_ORG") || 
-                            roleList.contains("ORGANISATEUR") || roleList.contains("ROLE_ORGANISATEUR")) {
+                        if (roleList.contains("ORG") || roleList.contains("ROLE_ORG") ||
+                                roleList.contains("ORGANISATEUR") || roleList.contains("ROLE_ORGANISATEUR")) {
                             // Return filtered projects for ORG users
                             List<ProjetDTO> projets = projetService.getProjetsByOrganisationId(orgId);
                             return ResponseEntity.ok(projets);
@@ -138,8 +134,6 @@ public class ProjetController {
             @RequestParam String titre,
             @RequestParam String description,
             @RequestParam Double objectifFinancier,
-            @RequestParam String dateDebut,
-            @RequestParam String dateFin,
             @RequestParam(required = false) String statut,
             @RequestParam(required = false) org.springframework.web.multipart.MultipartFile image) {
         try {
@@ -147,8 +141,6 @@ public class ProjetController {
                     .titre(titre)
                     .description(description)
                     .objectifFinancier(objectifFinancier)
-                    .dateDebut(java.time.LocalDate.parse(dateDebut))
-                    .dateFin(java.time.LocalDate.parse(dateFin))
                     .statut(statut)
                     .build();
 

@@ -12,8 +12,6 @@ public class ProjetDTO {
     private String titre;
     private String description;
     private Double objectifFinancier;
-    private LocalDate dateDebut;
-    private LocalDate dateFin;
     private String statut;
     private String image;
     private LocalDate dateCreation;

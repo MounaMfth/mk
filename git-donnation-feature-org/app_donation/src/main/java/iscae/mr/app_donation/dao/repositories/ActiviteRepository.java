@@ -14,12 +14,12 @@ public interface ActiviteRepository extends JpaRepository<Activite, String> {
 
     // ✅ Toutes les activités avec organisation (évite N+1)
     @Query("""
-        select a from Activite a
-        join fetch a.organisation o
-        order by a.dateDebut desc, a.titre asc
-    """)
+                select a from Activite a
+                join fetch a.organisation o
+                order by a.titre asc
+            """)
     List<Activite> findAllWithOrganisation();
-    
+
     // ❌ SUPPRIMER - Activite n'a pas de relation 'user'
     // @Query("SELECT a FROM Activite a WHERE a.user.id = :userId")
     // List<Activite> findByUserId(@Param("userId") Long userId);

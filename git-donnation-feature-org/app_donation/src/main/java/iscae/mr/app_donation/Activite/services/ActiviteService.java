@@ -55,8 +55,6 @@ public class ActiviteService {
         .id(a.getId())
         .titre(a.getTitre())
         .description(a.getDescription())
-        .dateDebut(a.getDateDebut())
-        .dateFin(a.getDateFin())
         .latitude(a.getLatitude())
         .longitude(a.getLongitude())
         .image(a.getImage())
@@ -169,8 +167,6 @@ public class ActiviteService {
       // ✅ Mettre à jour les champs
       existing.setTitre(updated.getTitre());
       existing.setDescription(updated.getDescription());
-      existing.setDateDebut(updated.getDateDebut());
-      existing.setDateFin(updated.getDateFin());
       existing.setLatitude(updated.getLatitude());
       existing.setLongitude(updated.getLongitude());
 
